@@ -1,0 +1,34 @@
+<div class="auth-card animate-in">
+  <div class="text-center mb-10">
+    <div class="inline-block p-4 bg-indigo-50 dark:bg-indigo-950/40 rounded-2xl mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+      </svg>
+    </div>
+    <h1 class="text-3xl font-black text-slate-900 dark:text-white m-0">З поверненням!</h1>
+    <p class="text-slate-500 dark:text-slate-400 mt-2">Увійдіть у свій акаунт (Twitter Clone)</p>
+  </div>
+
+  <%= form_with url: login_path, local: true, class: "space-y-6" do |f| %>
+    <div class="form-group">
+      <%= f.label :email, "Електронна пошта", class: "form-label" %>
+      <%= f.email_field :email, class: "form-input", placeholder: "name@example.com" %>
+    </div>
+
+    <div class="form-group">
+      <div class="flex justify-between items-center mb-2">
+        <%= f.label :password, "Пароль", class: "form-label m-0" %>
+        <a href="#" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 no-underline hover:underline">Забули пароль?</a>
+      </div>
+      <%= f.password_field :password, class: "form-input", placeholder: "••••••••" %>
+    </div>
+
+    <div class="pt-4">
+      <%= f.submit "Увійти", class: "btn-primary w-full py-4 text-lg cursor-pointer" %>
+    </div>
+  <% end %>
+
+  <div class="mt-8 text-center text-slate-500 dark:text-slate-400 text-sm">
+    Ще не маєте акаунта? <%= link_to "Зареєструватися", signup_path, class: "text-indigo-600 dark:text-indigo-400 font-bold no-underline hover:underline" %>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="auth-card animate-in">
+  <div class="text-center mb-10">
+    <div class="inline-block p-4 bg-indigo-50 dark:bg-indigo-950/40 rounded-2xl mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+      </svg>
+    </div>
+    <h1 class="text-3xl font-black text-slate-900 dark:text-white m-0">Приєднуйтесь!</h1>
+    <p class="text-slate-500 dark:text-slate-400 mt-2">Створіть акаунт у Twitter Clone</p>
+  </div>
+
+  <%= form_with model: @user, url: signup_path, local: true, class: "space-y-6" do |f| %>
+    <% if @user.errors.any? %>
+      <div style="background-color: var(--color-danger-bg); padding: 16px; border-radius: 12px; border: 1px solid rgba(244, 63, 94, 0.2); margin-bottom: 20px;">
+        <ul style="color: var(--color-danger); font-size: 14px; margin: 0; padding-left: 20px;">
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :username, "Ім'я користувача", class: "form-label" %>
+      <%= f.text_field :username, class: "form-input", placeholder: "username" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, "Електронна пошта", class: "form-label" %>
+      <%= f.email_field :email, class: "form-input", placeholder: "name@example.com" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, "Пароль", class: "form-label" %>
+      <%= f.password_field :password, class: "form-input", placeholder: "••••••••" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, "Підтвердження пароля", class: "form-label" %>
+      <%= f.password_field :password_confirmation, class: "form-input", placeholder: "••••••••" %>
+    </div>
+
+    <div class="pt-4">
+      <%= f.submit "Зареєструватися", class: "btn-primary w-full py-4 text-lg cursor-pointer" %>
+    </div>
+  <% end %>
+
+  <div class="mt-8 text-center text-slate-500 dark:text-slate-400 text-sm">
+    Вже маєте акаунт? <%= link_to "Увійти", login_path, class: "text-indigo-600 dark:text-indigo-400 font-bold no-underline hover:underline" %>
+  </div>
+</div>
